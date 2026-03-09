@@ -1,0 +1,181 @@
+
+============================================================
+  STEP 1: Generate P2SH-SegWit Addresses A', B', C'
+============================================================
+Address A': 2MyZY3tPj7pdSSdy6VheZrdHgwJiaSfBBoJ
+Address B': 2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9
+Address C': 2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8
+✓ Saved to segwit_addresses.json
+
+============================================================
+  STEP 2: Fund Address A'
+============================================================
+Funding txid: ca6f201056967ced0ad3e8b869c380e0f93c34818ba0f8c1470fa97075e4d298
+Sent 1.0 BTC → Address A'
+  ✓ Mined 6 blocks
+
+UTXOs at A':
+  txid: ca6f201056967ced0ad3e8b869c380e0f93c34818ba0f8c1470fa97075e4d298
+  vout: 1
+  amount: 1.00000000 BTC
+
+============================================================
+  STEP 3: Transaction A' → B'
+============================================================
+Input:  ca6f201056967ced0ad3e8b869c380e0f93c34818ba0f8c1470fa97075e4d298:1
+Amount: 1.00000000 BTC  |  Fee: 0.0001  |  Sending: 0.99990000 BTC
+
+[CHALLENGE SCRIPT — scriptPubKey for Address B']
+  type: scripthash
+  asm:  OP_HASH160 652084904b2946273d6bbf74de7309344c682426 OP_EQUAL
+  hex:  a914652084904b2946273d6bbf74de7309344c68242687
+
+✓ Signed successfully
+
+[Full decoded SIGNED A'→B' tx]
+{
+  "txid": "c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b",
+  "hash": "32e613e8127463cd34334158e19736b80175e2e8c67ccfb822279480f5e0aae0",
+  "version": 2,
+  "size": 215,
+  "vsize": 134,
+  "weight": 533,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "ca6f201056967ced0ad3e8b869c380e0f93c34818ba0f8c1470fa97075e4d298",
+      "vout": 1,
+      "scriptSig": {
+        "asm": "0014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b",
+        "hex": "160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b"
+      },
+      "txinwitness": [
+        "30440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901",
+        "0367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b143"
+      ],
+      "sequence": 4294967293
+    }
+  ],
+  "vout": [
+    {
+      "value": 0.9999,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_HASH160 652084904b2946273d6bbf74de7309344c682426 OP_EQUAL",
+        "desc": "addr(2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9)#sxkvhaxx",
+        "hex": "a914652084904b2946273d6bbf74de7309344c68242687",
+        "address": "2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9",
+        "type": "scripthash"
+      }
+    }
+  ]
+}
+
+[RESPONSE SCRIPT — scriptSig]
+  asm: 0014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b
+  hex: 160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b
+
+[WITNESS DATA (segregated signature)]
+  [0] (signature): 30440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901
+  [1] (public key): 0367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b143
+
+✓ Broadcast! txid A'→B': c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b
+  ✓ Mined 6 blocks
+
+============================================================
+  STEP 4: Transaction B' → C'
+============================================================
+UTXOs at B':
+  txid: c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b  vout: 0  amount: 0.99990000
+
+✓ Confirmed: UTXO at B' came from txid A'→B'
+
+[CHALLENGE SCRIPT — scriptPubKey for Address C']
+  type: scripthash
+  asm:  OP_HASH160 26ab12185562333f76775557bf3ad89ff594f839 OP_EQUAL
+  hex:  a91426ab12185562333f76775557bf3ad89ff594f83987
+
+[Full decoded SIGNED B'→C' tx]
+{
+  "txid": "6b6d287fdc517b57a30bc92b8017116d8dd7695ead4b14db26a17f5d9c535a4d",
+  "hash": "0052f5562575a143efd1e7ecaa528a0322fe8c215ecada062ba44aad26dfaf7e",
+  "version": 2,
+  "size": 215,
+  "vsize": 134,
+  "weight": 533,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b",
+      "vout": 0,
+      "scriptSig": {
+        "asm": "001428b4428962cc1d516dd6bede9760c751e1eef38d",
+        "hex": "16001428b4428962cc1d516dd6bede9760c751e1eef38d"
+      },
+      "txinwitness": [
+        "304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701",
+        "0211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e"
+      ],
+      "sequence": 4294967293
+    }
+  ],
+  "vout": [
+    {
+      "value": 0.9998,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_HASH160 26ab12185562333f76775557bf3ad89ff594f839 OP_EQUAL",
+        "desc": "addr(2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8)#l8sjkfpu",
+        "hex": "a91426ab12185562333f76775557bf3ad89ff594f83987",
+        "address": "2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8",
+        "type": "scripthash"
+      }
+    }
+  ]
+}
+
+[RESPONSE SCRIPT — scriptSig]
+  asm: 001428b4428962cc1d516dd6bede9760c751e1eef38d
+  hex: 16001428b4428962cc1d516dd6bede9760c751e1eef38d
+
+[WITNESS DATA (segregated signature)]
+  [0] (signature): 304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701
+  [1] (public key): 0211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e
+
+[CHALLENGE vs RESPONSE CHECK]
+  Challenge (scriptPubKey B'): OP_HASH160 652084904b2946273d6bbf74de7309344c682426 OP_EQUAL
+  Response  (scriptSig B'→C'): 001428b4428962cc1d516dd6bede9760c751e1eef38d
+  Witness[0] signature:        304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701
+  Witness[1] pubkey:           0211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e
+
+✓ Broadcast! txid B'→C': 6b6d287fdc517b57a30bc92b8017116d8dd7695ead4b14db26a17f5d9c535a4d
+  ✓ Mined 6 blocks
+
+============================================================
+  STEP 5: Transaction Sizes
+============================================================
+
+Tx A'→B':
+  size:   215 bytes
+  vsize:  134 vbytes
+  weight: 533 WU
+
+Tx B'→C':
+  size:   215 bytes
+  vsize:  134 vbytes
+  weight: 533 WU
+
+============================================================
+  STEP 6: btcdeb Validation Command (run separately)
+============================================================
+
+btcdeb --tx=020000000001013bf04d31d6c0bfbb8e91cf907ec9b0e0409f6ef7458fd22d92a333f59889f9c4000000001716001428b4428962cc1d516dd6bede9760c751e1eef38dfdffffff01e092f5050000000017a91426ab12185562333f76775557bf3ad89ff594f839870247304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701210211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e00000000 --txin=0200000000010198d2e47570a90f47c1f8a08b81343cf9e080c369b8e8d30aed7c965610206fca0100000017160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59bfdffffff01f0b9f5050000000017a914652084904b2946273d6bbf74de7309344c68242687024730440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901210367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b14300000000
+
+============================================================
+  Saving Summary
+============================================================
+✓ Saved to part2_summary.json
+
+============================================================
+  PART 2 COMPLETE ✓
+============================================================

@@ -1,0 +1,58 @@
+{
+  "addresses": {
+    "A_prime": "2MyZY3tPj7pdSSdy6VheZrdHgwJiaSfBBoJ",
+    "B_prime": "2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9",
+    "C_prime": "2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8"
+  },
+  "transactions": {
+    "A_prime_to_B_prime": {
+      "txid": "c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b",
+      "challenge_script_B_prime": {
+        "asm": "OP_HASH160 652084904b2946273d6bbf74de7309344c682426 OP_EQUAL",
+        "desc": "addr(2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9)#sxkvhaxx",
+        "hex": "a914652084904b2946273d6bbf74de7309344c68242687",
+        "address": "2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9",
+        "type": "scripthash"
+      },
+      "response_scriptsig": {
+        "asm": "0014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b",
+        "hex": "160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b"
+      },
+      "witness": [
+        "30440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901",
+        "0367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b143"
+      ]
+    },
+    "B_prime_to_C_prime": {
+      "txid": "6b6d287fdc517b57a30bc92b8017116d8dd7695ead4b14db26a17f5d9c535a4d",
+      "challenge_script_C_prime": {
+        "asm": "OP_HASH160 26ab12185562333f76775557bf3ad89ff594f839 OP_EQUAL",
+        "desc": "addr(2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8)#l8sjkfpu",
+        "hex": "a91426ab12185562333f76775557bf3ad89ff594f83987",
+        "address": "2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8",
+        "type": "scripthash"
+      },
+      "response_scriptsig": {
+        "asm": "001428b4428962cc1d516dd6bede9760c751e1eef38d",
+        "hex": "16001428b4428962cc1d516dd6bede9760c751e1eef38d"
+      },
+      "witness": [
+        "304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701",
+        "0211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e"
+      ]
+    }
+  },
+  "sizes": {
+    "A_prime_to_B_prime": {
+      "size": 215,
+      "vsize": 134,
+      "weight": 533
+    },
+    "B_prime_to_C_prime": {
+      "size": 215,
+      "vsize": 134,
+      "weight": 533
+    }
+  },
+  "btcdeb_command": "btcdeb --tx=020000000001013bf04d31d6c0bfbb8e91cf907ec9b0e0409f6ef7458fd22d92a333f59889f9c4000000001716001428b4428962cc1d516dd6bede9760c751e1eef38dfdffffff01e092f5050000000017a91426ab12185562333f76775557bf3ad89ff594f839870247304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701210211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e00000000 --txin=0200000000010198d2e47570a90f47c1f8a08b81343cf9e080c369b8e8d30aed7c965610206fca0100000017160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59bfdffffff01f0b9f5050000000017a914652084904b2946273d6bbf74de7309344c68242687024730440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901210367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b14300000000"
+}
