@@ -1,22 +1,22 @@
 {
   "size_comparison": {
-    "P2PKH_B_to_C": {
+    "p2pkh_B_to_C": {
       "size": 191,
       "vsize": 191,
       "weight": 764
     },
-    "SegWit_B_to_C": {
+    "segwit_B_to_C": {
       "size": 215,
       "vsize": 134,
       "weight": 533
     },
-    "savings_vsize": "29.8%"
+    "vsize_saving": "29.8%"
   },
-  "script_sizes_bytes": {
-    "P2PKH_scriptPubKey": 25,
-    "P2PKH_scriptSig": 106,
-    "SegWit_scriptPubKey": 23,
-    "SegWit_scriptSig": 23,
-    "SegWit_witness": 104
+  "script_bytes": {
+    "p2pkh_spk": 25,
+    "p2pkh_ssig": 106,
+    "segwit_spk": 23,
+    "segwit_ssig": 23,
+    "segwit_wit": 104
   }
 }

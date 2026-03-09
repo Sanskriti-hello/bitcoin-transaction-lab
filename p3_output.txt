@@ -1,0 +1,69 @@
+loading summaries...
+
+========== size comparison ==========
+
+metric              p2pkh     segwit    savings
+----------------------------------------------
+size (bytes)          191        215     -12.6%
+vsize (vbytes)        191        134      29.8%
+weight (WU)           764        533      30.2%
+
+========== script structure comparison ==========
+
+p2pkh:
+  scriptpubkey : OP_DUP OP_HASH160 bd67397892887d1af275e31173a53cd8a376107d OP_EQUALVERIFY OP_CHECKSIG
+  scriptsig    : 304402200bde2b26b9eee139286f7bdd9011911436d8f8786a901284709389230370990502204709...
+  witness      : none
+
+segwit:
+  scriptpubkey : OP_HASH160 d65675dc37e796a31825573b45d20467b48fc3cf OP_EQUAL
+  scriptsig    : 001404e5bad950f4ee912914c9d9eee8c173b7826102
+  witness[0]   : 304402203d1089a286d54166ad20b51377fb7a49ee298e529dfe5869d0f8... (signature)
+  witness[1]   : 038019cda07cd3b7eb9421751ff0aac1b61a988d55973afa60fbe4293ab99c193f (pubkey)
+
+========== script sizes in bytes ==========
+
+p2pkh scriptpubkey : 25 bytes
+p2pkh scriptsig    : 106 bytes (sig+pubkey all here)
+p2pkh witness      : 0 bytes
+
+segwit scriptpubkey: 23 bytes
+segwit scriptsig   : 23 bytes (only redeemscript)
+segwit witness     : 104 bytes (sig+pubkey moved here)
+
+========== why segwit is smaller ==========
+
+in p2pkh all data including sig is in scriptsig
+scriptsig bytes are counted at weight x4
+
+in segwit sig+pubkey moves to witness field
+witness bytes counted at weight x1 (75% discount!!)
+
+weight formula:
+  weight = (non-witness bytes x 4) + (witness bytes x 1)
+  vbytes = ceil(weight / 4)
+
+p2pkh example:
+  191 bytes, no witness
+  weight = 191 x 4 = 764 WU
+  vbytes = 764 / 4 = 191
+
+segwit example:
+  ~108 non-witness + ~107 witness
+  weight = (108 x 4) + (107 x 1) = 432 + 107 = 539 WU
+  vbytes = ceil(539/4) = 135
+  (actual measured 533 WU -> 134 vbytes)
+
+fee saving at 10 sat/vbyte:
+  p2pkh  -> 191 x 10 = 1910 sats
+  segwit -> 134 x 10 = 1340 sats
+  saving -> 570 sats per txn (~30%)
+
+other benefits:
+  - fixes txn malleability (sig not in txid calc anymore)
+  - enables lightning network
+  - more txns per block (higher throughput)
+
+saved to part3_summary.json
+
+=== part 3 done ===

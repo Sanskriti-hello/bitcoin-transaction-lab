@@ -1,0 +1,67 @@
+
+--- generating 3 legacy adresses ---
+addr A: msHDz1o3mFxQjKBw7CAxrLW1crF2TTpr7b
+addr B: mxnRfURkaEPpGdmf6EqkmgGg9ggJGJU5cN
+addr C: mtqvSHwe7fC6Eux36REkK9P7iDHk8H3Gjo
+saved adresses to legacy_addrs.json
+
+--- funding addr A ---
+funding txid: 899317b6f6cf0d1412e8c04aaabaa1730747e399b5c937e54b3a1876adbb1941
+mined 6 bloks
+
+utxos at A:
+  txid: 899317b6f6cf0d1412e8c04aaabaa1730747e399b5c937e54b3a1876adbb1941
+  vout: 0
+  amt: 1.00000000
+
+--- making txn A to B ---
+input: 899317b6f6cf0d1412e8c04aaabaa1730747e399b5c937e54b3a1876adbb1941:0
+sending 0.99990000 btc to B
+
+[challenge script / scriptPubKey for addr B]
+  type : pubkeyhash
+  asm  : OP_DUP OP_HASH160 bd67397892887d1af275e31173a53cd8a376107d OP_EQUALVERIFY OP_CHECKSIG
+  hex  : 76a914bd67397892887d1af275e31173a53cd8a376107d88ac
+
+signing done
+
+[decoded signed A->B txn]
+{
+  "txid": "105e2c9e37135a3ab0404843b6df6452f5368bd40f64500ea93b8feb050a2e1a",
+  "hash": "105e2c9e37135a3ab0404843b6df6452f5368bd40f64500ea93b8feb050a2e1a",
+  "version": 2,
+  "size": 191,
+  "vsize": 191,
+  "weight": 764,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "899317b6f6cf0d1412e8c04aaabaa1730747e399b5c937e54b3a1876adbb1941",
+      "vout": 0,
+      "scriptSig": {
+        "asm": "3044022019fc4c4a03e887f9eb2bdaf72b4b78b72b80cc7eaa3f247cddc1e04acdd0fcbb022014f40693936429c19217c1d2438a23902bff7a4b7d61e1f71ee9bf8db500a552[ALL] 03c6585a8444569c03233c89e359a602702fa7afe67b7087769c158f715cf90e30",
+        "hex": "473044022019fc4c4a03e887f9eb2bdaf72b4b78b72b80cc7eaa3f247cddc1e04acdd0fcbb022014f40693936429c19217c1d2438a23902bff7a4b7d61e1f71ee9bf8db500a552012103c6585a8444569c03233c89e359a602702fa7afe67b7087769c158f715cf90e30"
+      },
+      "sequence": 4294967293
+    }
+  ],
+  "vout": [
+    {
+      "value": 0.9999,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 bd67397892887d1af275e31173a53cd8a376107d OP_EQUALVERIFY OP_CHECKSIG",
+        "desc": "addr(mxnRfURkaEPpGdmf6EqkmgGg9ggJGJU5cN)#y6mchat6",
+        "hex": "76a914bd67397892887d1af275e31173a53cd8a376107d88ac",
+        "address": "mxnRfURkaEPpGdmf6EqkmgGg9ggJGJU5cN",
+        "type": "pubkeyhash"
+      }
+    }
+  ]
+}
+
+broadcasted! txid A->B: 105e2c9e37135a3ab0404843b6df6452f5368bd40f64500ea93b8feb050a2e1a
+mined 6 bloks
+
+saved state -> p1_state.json
+run p1_spend_b.py next

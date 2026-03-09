@@ -1,58 +1,58 @@
 {
-  "addresses": {
-    "A_prime": "2MyZY3tPj7pdSSdy6VheZrdHgwJiaSfBBoJ",
-    "B_prime": "2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9",
-    "C_prime": "2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8"
+  "addrs": {
+    "A": "2NB1Cu2NFNCcSznZKNoR9iMa4nbn9PpiJyz",
+    "B": "2NCnYAi5GMLZy5ZdKykoQjM6LfNXSuJE7yc",
+    "C": "2N595UZAVXjsRDH9XowziXSqDf9USSseyuo"
   },
-  "transactions": {
-    "A_prime_to_B_prime": {
-      "txid": "c4f98998f533a3922dd28f45f76e9f40e0b0c97e90cf918ebbbfc0d6314df03b",
-      "challenge_script_B_prime": {
-        "asm": "OP_HASH160 652084904b2946273d6bbf74de7309344c682426 OP_EQUAL",
-        "desc": "addr(2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9)#sxkvhaxx",
-        "hex": "a914652084904b2946273d6bbf74de7309344c68242687",
-        "address": "2N2TwC36qw1AK8CuaT5sKVqXgddVe6efFX9",
+  "txns": {
+    "A_to_B": {
+      "txid": "a450765063eaee4fc9a9ddc5af4f1ce1ec88255054f0187ff920719ae83fb872",
+      "spk_b2": {
+        "asm": "OP_HASH160 d65675dc37e796a31825573b45d20467b48fc3cf OP_EQUAL",
+        "desc": "addr(2NCnYAi5GMLZy5ZdKykoQjM6LfNXSuJE7yc)#kku369k4",
+        "hex": "a914d65675dc37e796a31825573b45d20467b48fc3cf87",
+        "address": "2NCnYAi5GMLZy5ZdKykoQjM6LfNXSuJE7yc",
         "type": "scripthash"
       },
-      "response_scriptsig": {
-        "asm": "0014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b",
-        "hex": "160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59b"
+      "ssig": {
+        "asm": "0014946d130503eb2c71e474611f0b29e93a7179ec33",
+        "hex": "160014946d130503eb2c71e474611f0b29e93a7179ec33"
       },
       "witness": [
-        "30440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901",
-        "0367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b143"
+        "3044022068d29bf98e8fe5afda1243958cecacf54bb333282eece278c310b3a403787d5802203d7ad73805f36417967de719096935389f7a73a231efeabc1932eb0a87eec7a501",
+        "026fa54dd0669c8e23a04d0102b7c5ded875cb96cd137ade220302b3c7c994b988"
       ]
     },
-    "B_prime_to_C_prime": {
-      "txid": "6b6d287fdc517b57a30bc92b8017116d8dd7695ead4b14db26a17f5d9c535a4d",
-      "challenge_script_C_prime": {
-        "asm": "OP_HASH160 26ab12185562333f76775557bf3ad89ff594f839 OP_EQUAL",
-        "desc": "addr(2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8)#l8sjkfpu",
-        "hex": "a91426ab12185562333f76775557bf3ad89ff594f83987",
-        "address": "2MvmgbmncoLMMrVWUUG1qYbcufrHKSK4hX8",
+    "B_to_C": {
+      "txid": "c2531d0daa98f93eb7656946a4793fecd8c877d3b4f3b1cdfa079678339fa8f9",
+      "spk_c2": {
+        "asm": "OP_HASH160 8277e85f67e798b33ae34ce953f6ff84fe6d98a5 OP_EQUAL",
+        "desc": "addr(2N595UZAVXjsRDH9XowziXSqDf9USSseyuo)#g4dwd4c2",
+        "hex": "a9148277e85f67e798b33ae34ce953f6ff84fe6d98a587",
+        "address": "2N595UZAVXjsRDH9XowziXSqDf9USSseyuo",
         "type": "scripthash"
       },
-      "response_scriptsig": {
-        "asm": "001428b4428962cc1d516dd6bede9760c751e1eef38d",
-        "hex": "16001428b4428962cc1d516dd6bede9760c751e1eef38d"
+      "ssig": {
+        "asm": "001404e5bad950f4ee912914c9d9eee8c173b7826102",
+        "hex": "16001404e5bad950f4ee912914c9d9eee8c173b7826102"
       },
       "witness": [
-        "304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701",
-        "0211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e"
+        "304402203d1089a286d54166ad20b51377fb7a49ee298e529dfe5869d0f8ba30522bfa37022036b2c0f91a7f4c64c4659d4e2d3310e8783752a3fcedca71bea919ac7b5dc3fe01",
+        "038019cda07cd3b7eb9421751ff0aac1b61a988d55973afa60fbe4293ab99c193f"
       ]
     }
   },
   "sizes": {
-    "A_prime_to_B_prime": {
+    "A_to_B": {
       "size": 215,
       "vsize": 134,
       "weight": 533
     },
-    "B_prime_to_C_prime": {
+    "B_to_C": {
       "size": 215,
       "vsize": 134,
       "weight": 533
     }
   },
-  "btcdeb_command": "btcdeb --tx=020000000001013bf04d31d6c0bfbb8e91cf907ec9b0e0409f6ef7458fd22d92a333f59889f9c4000000001716001428b4428962cc1d516dd6bede9760c751e1eef38dfdffffff01e092f5050000000017a91426ab12185562333f76775557bf3ad89ff594f839870247304402207bf59e890560336cd796e95fe4d3b52f8ffc698cc9ab2ec50a5ee1c5a195411f0220515f1916e27816bff55c32b41bf7cafac8635470a87f6ef63a403830da3fff6701210211b45cffff1f601467a300ad1bd1f657a101633a645bc4e58466112e75c3e06e00000000 --txin=0200000000010198d2e47570a90f47c1f8a08b81343cf9e080c369b8e8d30aed7c965610206fca0100000017160014e3fbeec86a4d9fb4e182bc2029f5bf291ea6a59bfdffffff01f0b9f5050000000017a914652084904b2946273d6bbf74de7309344c68242687024730440220037a998fcc52b8dc8fae4b3267b6d7abd482692648a1f17a501e526112e97b4e02202ffb9790bff9fdbe39de69af5702f1aaf1182197700a2b7c211cbdfc10fcc56901210367bbe80cca07e338fa586a361d2e353bc51e5fc663d3b353dabc4038a926b14300000000"
+  "btcdeb": "btcdeb --tx=0200000000010172b83fe89a7120f97f18f054502588ece11c4fafc5dda9c94feeea63507650a4000000001716001404e5bad950f4ee912914c9d9eee8c173b7826102fdffffff01e092f5050000000017a9148277e85f67e798b33ae34ce953f6ff84fe6d98a5870247304402203d1089a286d54166ad20b51377fb7a49ee298e529dfe5869d0f8ba30522bfa37022036b2c0f91a7f4c64c4659d4e2d3310e8783752a3fcedca71bea919ac7b5dc3fe0121038019cda07cd3b7eb9421751ff0aac1b61a988d55973afa60fbe4293ab99c193f00000000 --txin=02000000000101bc06080962c67d25e3b13c39b0f887894ed9ed08e30ef87ce358fb7c8a8819490000000017160014946d130503eb2c71e474611f0b29e93a7179ec33fdffffff01f0b9f5050000000017a914d65675dc37e796a31825573b45d20467b48fc3cf8702473044022068d29bf98e8fe5afda1243958cecacf54bb333282eece278c310b3a403787d5802203d7ad73805f36417967de719096935389f7a73a231efeabc1932eb0a87eec7a50121026fa54dd0669c8e23a04d0102b7c5ded875cb96cd137ade220302b3c7c994b98800000000"
 }
