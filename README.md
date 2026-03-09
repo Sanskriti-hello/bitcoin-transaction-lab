@@ -15,7 +15,8 @@
 
 This project implements Bitcoin transactions on a local regtest network using Python and Bitcoin Core RPC. It covers:
 
-- **Part 1** — Legacy P2PKH transactions (A → B → C)
+- **Part 1a** — Generate legacy addresses, fund A, send A → B
+- **Part 1b** — listunspent at B, send B → C, analyze scripts
 - **Part 2** — SegWit P2SH-P2WPKH transactions (A' → B' → C')
 - **Part 3** — Comparative analysis of transaction sizes and script structures
 
@@ -69,7 +70,7 @@ bitcoind -daemon
 sleep 5
 bitcoin-cli createwallet "lab_wallet"
 bitcoin-cli generatetoaddress 101 $(bitcoin-cli getnewaddress)
-bitcoin-cli getbalance   # should show 50.0 BTC
+bitcoin-cli getbalance
 ```
 
 ### 4. Install Python dependencies
@@ -92,24 +93,27 @@ cd btcdeb && ./autogen.sh && ./configure && make -j$(nproc) && sudo make install
 
 ## Running the Code
 
-Make sure bitcoind is running and the venv is active before each run.
+Make sure bitcoind is running and venv is active before each run.
 
 ```bash
 source venv/bin/activate
 ```
 
 ```bash
-# Part 1 — Legacy P2PKH
-python3 part1_legacy.py
+# Part 1a — generate addresses, fund A, send A->B
+python3 p1_addr_and_send.py
 
-# Part 2 — SegWit P2SH-P2WPKH
-python3 part2_segwit.py
+# Part 1b — listunspent at B, send B->C, analyze scripts
+python3 p1_spend_b.py
 
-# Part 3 — Comparison
-python3 part3_comparison.py
+# Part 2 — full segwit A'->B'->C'
+python3 p2_segwit.py
+
+# Part 3 — size and script comparison
+python3 p3_compare.py
 ```
 
-Each script saves its output to a `*_summary.json` file and prints all decoded scripts, TXIDs, and sizes to the terminal.
+Part 1b reads state from Part 1a output so run them in order. Each script saves results to a `*_summary.json` file.
 
 ---
 
@@ -117,18 +121,20 @@ Each script saves its output to a `*_summary.json` file and prints all decoded s
 
 ```
 bitcoin-transaction-lab/
-├── part1_legacy.py          # Part 1: P2PKH transactions
-├── part2_segwit.py          # Part 2: SegWit transactions
-├── part3_comparison.py      # Part 3: Size and script comparison
+├── p1_addr_and_send.py      # Part 1a: generate addresses, fund A, A->B
+├── p1_spend_b.py            # Part 1b: listunspent, B->C, script analysis
+├── p2_segwit.py             # Part 2: segwit A'->B'->C'
+├── p3_compare.py            # Part 3: size and script comparison
+├── p1_state.json            # state passed from Part 1a to 1b
 ├── part1_summary.json       # Part 1 output data
 ├── part2_summary.json       # Part 2 output data
 ├── part3_summary.json       # Part 3 comparison data
-├── legacy_addresses.json    # Generated P2PKH addresses
-├── segwit_addresses.json    # Generated SegWit addresses
+├── legacy_addrs.json        # generated P2PKH addresses
+├── segwit_addrs.json        # generated SegWit addresses
 ├── screenshots/             # btcdeb execution screenshots
 │   ├── p1_btcdeb_*.png      # Part 1 P2PKH script steps
 │   └── p2_btcdeb_*.png      # Part 2 SegWit script steps
-├── report.pdf               # Full lab report
+├── report.pdf               # full lab report
 └── README.md
 ```
 
