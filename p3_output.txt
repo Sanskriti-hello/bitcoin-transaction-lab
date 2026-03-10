@@ -11,15 +11,15 @@ weight (WU)           764        533      30.2%
 ========== script structure comparison ==========
 
 p2pkh:
-  scriptpubkey : OP_DUP OP_HASH160 bd67397892887d1af275e31173a53cd8a376107d OP_EQUALVERIFY OP_CHECKSIG
-  scriptsig    : 304402200bde2b26b9eee139286f7bdd9011911436d8f8786a901284709389230370990502204709...
+  scriptpubkey : OP_DUP OP_HASH160 8c4deaea5fa0ca2798347033d69abb0051af9f24 OP_EQUALVERIFY OP_CHECKSIG
+  scriptsig    : 3044022055ee689066e5bd7ea7d5ec7091d1e4484a1a1ef91d0fc0a13569d5af9ae721f302204d63...
   witness      : none
 
 segwit:
-  scriptpubkey : OP_HASH160 d65675dc37e796a31825573b45d20467b48fc3cf OP_EQUAL
-  scriptsig    : 001404e5bad950f4ee912914c9d9eee8c173b7826102
-  witness[0]   : 304402203d1089a286d54166ad20b51377fb7a49ee298e529dfe5869d0f8... (signature)
-  witness[1]   : 038019cda07cd3b7eb9421751ff0aac1b61a988d55973afa60fbe4293ab99c193f (pubkey)
+  scriptpubkey : OP_HASH160 32aa2bcdb8f5ede4a60b2f300f919aaaf5745796 OP_EQUAL
+  scriptsig    : 0014ffb9dcac2cca1e4ea378498d4f1beda758b771e3
+  witness[0]   : 3044022075f0860138569067736ab12bec4ef0fdd18fedb3dfddbb0dfb54... (signature)
+  witness[1]   : 0245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c (pubkey)
 
 ========== script sizes in bytes ==========
 

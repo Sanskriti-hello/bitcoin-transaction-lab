@@ -115,8 +115,8 @@ mine_blks(6)
 
 
 print("\n--- txn sizes ---")
-info_ab = rpc.getrawtransaction(txid_ab, True)
-info_bc = rpc.getrawtransaction(txid_bc, True)
+info_ab = rpc.decoderawtransaction(hex_ab)
+info_bc = rpc.decoderawtransaction(hex_bc)
 
 for lbl, inf in [("A->B", info_ab), ("B->C", info_bc)]:
     print(f"\n{lbl}:")
