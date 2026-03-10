@@ -49,10 +49,9 @@ p2pkh example:
   vbytes = 764 / 4 = 191
 
 segwit example:
-  ~108 non-witness + ~107 witness
-  weight = (108 x 4) + (107 x 1) = 432 + 107 = 539 WU
-  vbytes = ceil(539/4) = 135
-  (actual measured 533 WU -> 134 vbytes)
+  ~107 non-witness + ~104 witness
+  weight = (107 x 4) + (104 x 1) = 428 + 104 + 1 = 533 WU
+  vbytes = ceil(533/4) = 134
 
 fee saving at 10 sat/vbyte:
   p2pkh  -> 191 x 10 = 1910 sats
