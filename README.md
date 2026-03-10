@@ -268,6 +268,21 @@ final stack: [01]
 
 The scripts evaluate to `TRUE` — both transaction chains are valid.
 
+## btcdeb Script Verification
+
+The scripts were validated using btcdeb to trace the execution of the Bitcoin
+stack-based script interpreter.
+
+Example command:
+
+btcdeb --tx=<signed_B_to_C_tx> --txin=<A_to_B_tx>
+
+btcdeb allows step-by-step execution of opcodes such as:
+OP_DUP
+OP_HASH160
+OP_EQUALVERIFY
+OP_CHECKSIG
+
 ### Part 1 — P2PKH Script Execution (8 steps)
 
 | Step | Screenshot | What Happens |
