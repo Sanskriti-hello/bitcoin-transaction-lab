@@ -25,7 +25,7 @@ print("-" * 46)
 for m, unit in [("size", "bytes"), ("vsize", "vbytes"), ("weight", "WU")]:
     v1 = p1_sz[m]
     v2 = p2_sz[m]
-    diff = round((v1 - v2) / v1 * 100, 1) if v1 else 0
+    diff = round(((v1 - v2) / v1) * 100, 2) if v1 else 0
     print(f"{m+' ('+unit+')':<14} {str(v1):>10} {str(v2):>10} {str(diff)+'%':>10}")
 
 
@@ -84,9 +84,11 @@ p2pkh example:
   vbytes = 764 / 4 = 191
 
 segwit example:
-  ~107 non-witness + ~104 witness
-  weight = (107 x 4) + (104 x 1) = 428 + 104 + 1 = 533 WU
-  vbytes = ceil(533/4) = 134
+  ~108 non-witness + ~107 witness
+  weight = (108 x 4) + (107 x 1) = 432 + 107 = 539 WU
+  vbytes = ceil(539/4) = 135
+  (actual measured 533 WU -> 134 vbytes)
+
 fee saving at 10 sat/vbyte:
   p2pkh  -> 191 x 10 = 1910 sats
   segwit -> 134 x 10 = 1340 sats
@@ -104,7 +106,7 @@ out = {
     "size_comparison": {
         "p2pkh_B_to_C" : p1_sz,
         "segwit_B_to_C": p2_sz,
-        "vsize_saving" : f"{round((p1_sz['vsize'] - p2_sz['vsize']) / p1_sz['vsize'] * 100, 1)}%"
+        "vsize_saving" : f"{round(((p1_sz['vsize'] - p2_sz['vsize']) / p1_sz['vsize']) * 100, 2)}%"
     },
     "script_bytes": {
         "p2pkh_spk"  : spk1_bytes,

@@ -17,7 +17,7 @@ def conn():
 def mine_blks(n=6):
     c = conn()
     c.generatetoaddress(n, c.getnewaddress())
-    print(f"mined {n} bloks")
+    print(f"mined {n} blocks")
 
 class MyEncoder(json.JSONEncoder):
     def default(self, o):
@@ -29,8 +29,8 @@ class MyEncoder(json.JSONEncoder):
 rpc = conn()
 fee = Decimal("0.0001")
 
-print("\n--- generating segwit adresses A B C ---")
-# p2sh-segwit type gives us p2sh-p2wpkh adresses
+print("\n--- generating segwit addresses A B C ---")
+# p2sh-segwit type gives us p2sh-p2wpkh addresses
 addrA2 = rpc.getnewaddress("segA", "p2sh-segwit")
 addrB2 = rpc.getnewaddress("segB", "p2sh-segwit")
 addrC2 = rpc.getnewaddress("segC", "p2sh-segwit")
@@ -56,8 +56,11 @@ for u in utxos_a2:
 
 
 print("\n--- txn A' to B' ---")
+if not utxos_a2:
+    raise RuntimeError("No UTXOs found at address A'")
+
 utxo_a2 = utxos_a2[0]
-amt_a2b2 = round(utxo_a2["amount"] - fee, 8)
+amt_a2b2 = (utxo_a2["amount"] - fee).quantize(Decimal("0.00000001"))
 
 raw_a2b2 = rpc.createrawtransaction(
     [{"txid": utxo_a2["txid"], "vout": utxo_a2["vout"]}],
@@ -95,11 +98,16 @@ print("  asm:", ssig_a2b2["asm"])
 print("  hex:", ssig_a2b2["hex"])
 
 print("\n[witness data - segregated]")
+print("witness stack size:", len(wit_a2b2))
 for i, w in enumerate(wit_a2b2):
     lbl = "signature" if i == 0 else "pubkey"
     print(f"  [{i}] {lbl}: {w}")
 
-# brodcast
+print("\n--- SegWit structure ---")
+print("scriptSig contains redeemScript")
+print("signature and pubkey moved to witness")
+
+# broadcast
 txid_a2b2 = rpc.sendrawtransaction(hex_a2b2)
 print("\nbroadcasted! txid A'->B':", txid_a2b2)
 mine_blks(6)
@@ -111,15 +119,17 @@ print("utxos at B':")
 for u in utxos_b2:
     print("  txid:", u["txid"], " amt:", u["amount"])
 
+if not utxos_b2:
+    raise RuntimeError("No UTXOs found at address B'")
+
 utxo_b2 = utxos_b2[0]
 
 # verify chain
-if utxo_b2["txid"] != txid_a2b2:
-    print("ERROR: utxo chain broken!")
-    exit(1)
+assert utxo_b2["txid"] == txid_a2b2, "ERROR: utxo chain broken"
+assert utxo_b2["amount"] > 0, "ERROR: UTXO amount is zero"
 print("chain ok: utxo at B' came from A'->B' txn")
 
-amt_b2c2 = round(utxo_b2["amount"] - fee, 8)
+amt_b2c2 = (utxo_b2["amount"] - fee).quantize(Decimal("0.00000001"))
 
 raw_b2c2 = rpc.createrawtransaction(
     [{"txid": utxo_b2["txid"], "vout": utxo_b2["vout"]}],
@@ -156,9 +166,14 @@ print("  asm:", ssig_b2c2["asm"])
 print("  hex:", ssig_b2c2["hex"])
 
 print("\n[witness data]")
+print("witness stack size:", len(wit_b2c2))
 for i, w in enumerate(wit_b2c2):
     lbl = "signature" if i == 0 else "pubkey"
     print(f"  [{i}] {lbl}: {w}")
+
+print("\n--- SegWit structure ---")
+print("scriptSig contains redeemScript")
+print("signature and pubkey moved to witness")
 
 print("\n[challenge vs response]")
 print("challenge spk B':", spk_b2["asm"])
@@ -166,7 +181,7 @@ print("response ssig   :", ssig_b2c2["asm"])
 print("witness sig     :", wit_b2c2[0][:40], "...")
 print("witness pubkey  :", wit_b2c2[1] if len(wit_b2c2) > 1 else "na")
 
-# brodcast
+# broadcast
 txid_b2c2 = rpc.sendrawtransaction(hex_b2c2)
 print("\nbroadcasted! txid B'->C':", txid_b2c2)
 mine_blks(6)

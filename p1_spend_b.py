@@ -17,7 +17,7 @@ def conn():
 def mine_blks(n=6):
     c = conn()
     c.generatetoaddress(n, c.getnewaddress())
-    print(f"mined {n} bloks")
+    print(f"mined {n} blocks")
 
 class MyEncoder(json.JSONEncoder):
     def default(self, o):
@@ -52,19 +52,21 @@ for u in utxos_b:
     print("  vout  :", u["vout"])
     print("  amount:", u["amount"])
 
+if not utxos_b:
+    raise RuntimeError("No UTXOs found at address B")
+
 utxo_b = utxos_b[0]
 
-# double check - this utxo shud be from A->B txn
-if utxo_b["txid"] != txid_ab:
-    print("ERROR: wrong utxo, txid doesnt match!")
-    exit(1)
+# verify chain
+assert utxo_b["txid"] == txid_ab, "ERROR: txid mismatch - wrong UTXO"
+assert utxo_b["amount"] > 0, "ERROR: UTXO amount is zero"
 
 print(f"\nconfirmed: utxo at B came from txn A->B")
 print(f"txid: {txid_ab}")
 
 
 print("\n--- making txn B to C ---")
-amt_bc = round(utxo_b["amount"] - fee, 8)
+amt_bc = (utxo_b["amount"] - fee).quantize(Decimal("0.00000001"))
 
 inp = [{"txid": utxo_b["txid"], "vout": utxo_b["vout"]}]
 out = {addrC: amt_bc}
@@ -108,9 +110,9 @@ print("\nscriptSig gives <sig> and <pubkey>")
 print("scriptPubKey does hash160(pubkey) and checks it matches")
 print("then checksig verifies the signature -> if ok txn is valid")
 
-# brodcast
+# broadcast
 txid_bc = rpc.sendrawtransaction(hex_bc)
-print("\nbroadcasted! txid B->C:", txid_bc)
+print("\nbroadcasted B->C:", txid_bc)
 mine_blks(6)
 
 

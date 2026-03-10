@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# part 1 - genarate adresses and send from A to B
+# part 1 - generate addresses and send from A to B
 # CS216 assignment 2
 
 import json
@@ -12,16 +12,16 @@ pwd  = "cs216bitcoin"
 host = "127.0.0.1"
 port = 18443
 
-# helper to get connectoin
+# helper to get connection
 def conn():
     return AuthServiceProxy(f"http://{usr}:{pwd}@{host}:{port}")
 
-# mine some bloks to confirm txns
+# mine some blocks to confirm txns
 def mine_blks(n=6):
     c = conn()
     addr = c.getnewaddress()
     c.generatetoaddress(n, addr)
-    print(f"mined {n} bloks")
+    print(f"mined {n} blocks")
 
 # custom encoder bcz decimal not json serializable
 class MyEncoder(json.JSONEncoder):
@@ -31,10 +31,10 @@ class MyEncoder(json.JSONEncoder):
         return super().default(o)
 
 
-print("\n--- generating 3 legacy adresses ---")
+print("\n--- generating 3 legacy addresses ---")
 rpc = conn()
 
-# generate legacy (p2pkh) adresses
+# generate legacy (p2pkh) addresses
 addrA = rpc.getnewaddress("myA", "legacy")
 addrB = rpc.getnewaddress("myB", "legacy")
 addrC = rpc.getnewaddress("myC", "legacy")
@@ -43,11 +43,11 @@ print("addr A:", addrA)
 print("addr B:", addrB)
 print("addr C:", addrC)
 
-# save adresses to file
+# save addresses to file
 addrs = {"A": addrA, "B": addrB, "C": addrC}
 with open("legacy_addrs.json", "w") as f:
     json.dump(addrs, f, indent=2)
-print("saved adresses to legacy_addrs.json")
+print("saved addresses to legacy_addrs.json")
 
 
 print("\n--- funding addr A ---")
@@ -68,9 +68,12 @@ for u in utxos:
 
 
 print("\n--- making txn A to B ---")
+if not utxos:
+    raise RuntimeError("No UTXOs found at address A")
+
 utxo = utxos[0]
 fee  = Decimal("0.0001")
-amt  = round(utxo["amount"] - fee, 8)
+amt  = (utxo["amount"] - fee).quantize(Decimal("0.00000001"))
 
 print(f"input: {utxo['txid']}:{utxo['vout']}")
 print(f"sending {amt} btc to B")
@@ -103,9 +106,9 @@ decoded_signed = rpc.decoderawtransaction(signed_hex)
 print("\n[decoded signed A->B txn]")
 print(json.dumps(decoded_signed, indent=2, cls=MyEncoder))
 
-# brodcast txn
+# broadcast txn
 txid_ab = rpc.sendrawtransaction(signed_hex)
-print("\nbroadcasted! txid A->B:", txid_ab)
+print("\nbroadcasted txid A->B:", txid_ab)
 mine_blks(6)
 
 # save state so part2 script can use it
