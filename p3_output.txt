@@ -60,10 +60,25 @@ fee saving at 10 sat/vbyte:
   saving -> 570 sats per txn (~30%)
 
 other benefits:
-  - fixes txn malleability (sig not in txid calc anymore)
-  - enables lightning network
-  - more txns per block (higher throughput)
 
-saved to part3_summary.json
+-> fixes transaction malleability
+
+In legacy transactions, the digital signature is part of the transaction data used to compute the transaction ID (txid). Because signatures can be modified slightly without invalidating them, an attacker could change the txid of a transaction before it was confirmed. This problem is known as transaction malleability.
+
+SegWit solves this by moving the signature data to the witness field, which is not included in the txid calculation. As a result, once a transaction is created and broadcast, its txid cannot be altered by modifying the signature. This makes transaction referencing reliable and prevents attacks that depend on changing txids.
+
+-> enables lightning network
+
+Fixing transaction malleability was essential for building second-layer protocols like the Lightning Network. Lightning uses chains of pre-signed transactions that depend on stable transaction IDs. If the txid could change after signing, these off-chain payment channels would break.
+
+By separating signatures from the txid, SegWit provides the reliability required for off-chain scaling solutions, allowing many small payments to occur without each one being recorded directly on the blockchain.
+
+-> more transactions per block (higher throughput)
+
+SegWit introduced the concept of block weight, where witness data receives a 75% discount compared to non-witness transaction data.
+
+Because signatures make up a large portion of transaction size, moving them to the discounted witness area allows more transactions to fit within the same block weight limit. This effectively increases the number of transactions that can be processed per block without increasing the traditional 1 MB block size limit.
+
+As a result, SegWit improves network scalability and throughput while maintaining backward compatibility with older nodes.
 
 === part 3 done ===
