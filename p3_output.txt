@@ -4,22 +4,22 @@ loading summaries...
 
 metric              p2pkh     segwit    savings
 ----------------------------------------------
-size (bytes)          191        215     -12.6%
-vsize (vbytes)        191        134      29.8%
-weight (WU)           764        533      30.2%
+size (bytes)          191        215    -12.57%
+vsize (vbytes)        191        134     29.84%
+weight (WU)           764        533     30.24%
 
 ========== script structure comparison ==========
 
 p2pkh:
-  scriptpubkey : OP_DUP OP_HASH160 8c4deaea5fa0ca2798347033d69abb0051af9f24 OP_EQUALVERIFY OP_CHECKSIG
-  scriptsig    : 3044022055ee689066e5bd7ea7d5ec7091d1e4484a1a1ef91d0fc0a13569d5af9ae721f302204d63...
+  scriptpubkey : OP_DUP OP_HASH160 add64516bcc4bfa777940e4d7ad8f4ef340963ad OP_EQUALVERIFY OP_CHECKSIG
+  scriptsig    : 3044022030ed51ba901fca07780806e1b30250243b874243be25b795533e01573f7e5e2f02203e77...
   witness      : none
 
 segwit:
-  scriptpubkey : OP_HASH160 32aa2bcdb8f5ede4a60b2f300f919aaaf5745796 OP_EQUAL
-  scriptsig    : 0014ffb9dcac2cca1e4ea378498d4f1beda758b771e3
-  witness[0]   : 3044022075f0860138569067736ab12bec4ef0fdd18fedb3dfddbb0dfb54... (signature)
-  witness[1]   : 0245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c (pubkey)
+  scriptpubkey : OP_HASH160 b89a764a054a1ceffd68bac5e3da953aacbb320e OP_EQUAL
+  scriptsig    : 001499e40a39dea73ea25ab3301f4561f353927b9170
+  witness[0]   : 3044022050fadc4db8440a3be579b631214211c10f5bb933790c11f56037... (signature)
+  witness[1]   : 03e49f7ba180358fe94cc257b56ace978da96c33164c54803a66cbce0bfc96a757 (pubkey)
 
 ========== script sizes in bytes ==========
 
@@ -49,9 +49,10 @@ p2pkh example:
   vbytes = 764 / 4 = 191
 
 segwit example:
-  ~107 non-witness + ~104 witness
-  weight = (107 x 4) + (104 x 1) = 428 + 104 + 1 = 533 WU
-  vbytes = ceil(533/4) = 134
+  ~108 non-witness + ~107 witness
+  weight = (108 x 4) + (107 x 1) = 432 + 107 = 539 WU
+  vbytes = ceil(539/4) = 135
+  (actual measured 533 WU -> 134 vbytes)
 
 fee saving at 10 sat/vbyte:
   p2pkh  -> 191 x 10 = 1910 sats
@@ -59,25 +60,10 @@ fee saving at 10 sat/vbyte:
   saving -> 570 sats per txn (~30%)
 
 other benefits:
+  - fixes txn malleability (sig not in txid calc anymore)
+  - enables lightning network
+  - more txns per block (higher throughput)
 
--> fixes transaction malleability
-
-In legacy transactions, the digital signature is part of the transaction data used to compute the transaction ID (txid). Because signatures can be modified slightly without invalidating them, an attacker could change the txid of a transaction before it was confirmed. This problem is known as transaction malleability.
-
-SegWit solves this by moving the signature data to the witness field, which is not included in the txid calculation. As a result, once a transaction is created and broadcast, its txid cannot be altered by modifying the signature. This makes transaction referencing reliable and prevents attacks that depend on changing txids.
-
--> enables lightning network
-
-Fixing transaction malleability was essential for building second-layer protocols like the Lightning Network. Lightning uses chains of pre-signed transactions that depend on stable transaction IDs. If the txid could change after signing, these off-chain payment channels would break.
-
-By separating signatures from the txid, SegWit provides the reliability required for off-chain scaling solutions, allowing many small payments to occur without each one being recorded directly on the blockchain.
-
--> more transactions per block (higher throughput)
-
-SegWit introduced the concept of block weight, where witness data receives a 75% discount compared to non-witness transaction data.
-
-Because signatures make up a large portion of transaction size, moving them to the discounted witness area allows more transactions to fit within the same block weight limit. This effectively increases the number of transactions that can be processed per block without increasing the traditional 1 MB block size limit.
-
-As a result, SegWit improves network scalability and throughput while maintaining backward compatibility with older nodes.
+saved to part3_summary.json
 
 === part 3 done ===

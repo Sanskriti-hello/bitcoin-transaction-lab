@@ -1,29 +1,29 @@
 
---- generating segwit adresses A B C ---
-addr A': 2MwDLiQDFFdMTGNcoZNFJdzbWyZ5cGuSHwB
-addr B': 2Mws7da6CgS6HDuzBHtvixvz2awkQ5haTRG
-addr C': 2N8gyrug6h3uMr51cFdR91VkeJ5tBWv6vC8
+--- generating segwit addresses A B C ---
+addr A': 2N3kxyUhnXHAwYA4ZdHvwws1dFk4w1AMSWT
+addr B': 2NA5KMnxx5fbbdZ5Zdcm98c8DPbUNyn9p43
+addr C': 2NBPAuWDYffqRB2ut14GK98fTaPNZx3R9Jd
 saved to segwit_addrs.json
 
 --- funding addr A' ---
-funding txid: a5108f50c7e5d7927b80b6d62e2689e7c9d73791a7c910295d77ef44c52ec6d1
-mined 6 bloks
+funding txid: 5360f8a527ab8aef7a0e3578211a8b48fef882576e2097cca52badb837397662
+mined 6 blocks
 
 utxos at A':
-  txid: a5108f50c7e5d7927b80b6d62e2689e7c9d73791a7c910295d77ef44c52ec6d1  amt: 1.00000000
+  txid: 5360f8a527ab8aef7a0e3578211a8b48fef882576e2097cca52badb837397662  amt: 1.00000000
 
 --- txn A' to B' ---
 
 [challenge script for addr B']
   type: scripthash
-  asm : OP_HASH160 32aa2bcdb8f5ede4a60b2f300f919aaaf5745796 OP_EQUAL
-  hex : a91432aa2bcdb8f5ede4a60b2f300f919aaaf574579687
+  asm : OP_HASH160 b89a764a054a1ceffd68bac5e3da953aacbb320e OP_EQUAL
+  hex : a914b89a764a054a1ceffd68bac5e3da953aacbb320e87
 signing done
 
 [decoded signed A'->B']
 {
-  "txid": "b92b2ef1b3f4daac1b6bc6da28cf5b46c6d1333f7568308b8dade4e2521bc7c0",
-  "hash": "70686a2c9018f281062e300d6670936b598631332179f69880d0d4232e78a1b0",
+  "txid": "af7b950900c341613f623719b2d78aa0b28a9d09ee8b0b3cf0e89ba61b252d54",
+  "hash": "699bb89b4068da19ed795f3575be799ecfba14019400713faecacbb601916bce",
   "version": 2,
   "size": 215,
   "vsize": 134,
@@ -31,15 +31,15 @@ signing done
   "locktime": 0,
   "vin": [
     {
-      "txid": "a5108f50c7e5d7927b80b6d62e2689e7c9d73791a7c910295d77ef44c52ec6d1",
-      "vout": 1,
+      "txid": "5360f8a527ab8aef7a0e3578211a8b48fef882576e2097cca52badb837397662",
+      "vout": 0,
       "scriptSig": {
-        "asm": "0014c1aa6e6da6fc63969307e4772b27507ef50a24f9",
-        "hex": "160014c1aa6e6da6fc63969307e4772b27507ef50a24f9"
+        "asm": "0014c40f1affe289b5e546d61e481afa427059021b31",
+        "hex": "160014c40f1affe289b5e546d61e481afa427059021b31"
       },
       "txinwitness": [
-        "304402206969870bc46ee27b0dcbe402646ef4597e2b5ab3f365212071a7fa29aeaf407e02205aa16b4c55ad09cb44f17614ea417397868c69718f17799dcfaa84b93b6a494401",
-        "0330313eff56cb0bc8c1a5e7156e2491c671d4ff0a87a01628248583003a179004"
+        "304402204d01cfff922ed358d979f3eff2ab4907734ade1e32e56472b36d36061671c20b022076a1a1c8da2969bd5ce849aef94ed00c2a0795e18a6392da627e496a1ff793f001",
+        "039779e0c837efebfb59a1345dcea907d42a203c0695df249ba0f5d6a544cc8b57"
       ],
       "sequence": 4294967293
     }
@@ -49,10 +49,10 @@ signing done
       "value": 0.9999,
       "n": 0,
       "scriptPubKey": {
-        "asm": "OP_HASH160 32aa2bcdb8f5ede4a60b2f300f919aaaf5745796 OP_EQUAL",
-        "desc": "addr(2Mws7da6CgS6HDuzBHtvixvz2awkQ5haTRG)#0emhlpjf",
-        "hex": "a91432aa2bcdb8f5ede4a60b2f300f919aaaf574579687",
-        "address": "2Mws7da6CgS6HDuzBHtvixvz2awkQ5haTRG",
+        "asm": "OP_HASH160 b89a764a054a1ceffd68bac5e3da953aacbb320e OP_EQUAL",
+        "desc": "addr(2NA5KMnxx5fbbdZ5Zdcm98c8DPbUNyn9p43)#fxl0y6d8",
+        "hex": "a914b89a764a054a1ceffd68bac5e3da953aacbb320e87",
+        "address": "2NA5KMnxx5fbbdZ5Zdcm98c8DPbUNyn9p43",
         "type": "scripthash"
       }
     }
@@ -60,30 +60,35 @@ signing done
 }
 
 [response scriptsig]
-  asm: 0014c1aa6e6da6fc63969307e4772b27507ef50a24f9
-  hex: 160014c1aa6e6da6fc63969307e4772b27507ef50a24f9
+  asm: 0014c40f1affe289b5e546d61e481afa427059021b31
+  hex: 160014c40f1affe289b5e546d61e481afa427059021b31
 
 [witness data - segregated]
-  [0] signature: 304402206969870bc46ee27b0dcbe402646ef4597e2b5ab3f365212071a7fa29aeaf407e02205aa16b4c55ad09cb44f17614ea417397868c69718f17799dcfaa84b93b6a494401
-  [1] pubkey: 0330313eff56cb0bc8c1a5e7156e2491c671d4ff0a87a01628248583003a179004
+witness stack size: 2
+  [0] signature: 304402204d01cfff922ed358d979f3eff2ab4907734ade1e32e56472b36d36061671c20b022076a1a1c8da2969bd5ce849aef94ed00c2a0795e18a6392da627e496a1ff793f001
+  [1] pubkey: 039779e0c837efebfb59a1345dcea907d42a203c0695df249ba0f5d6a544cc8b57
 
-broadcasted! txid A'->B': b92b2ef1b3f4daac1b6bc6da28cf5b46c6d1333f7568308b8dade4e2521bc7c0
-mined 6 bloks
+--- SegWit structure ---
+scriptSig contains redeemScript
+signature and pubkey moved to witness
+
+broadcasted! txid A'->B': af7b950900c341613f623719b2d78aa0b28a9d09ee8b0b3cf0e89ba61b252d54
+mined 6 blocks
 
 --- txn B' to C' ---
 utxos at B':
-  txid: b92b2ef1b3f4daac1b6bc6da28cf5b46c6d1333f7568308b8dade4e2521bc7c0  amt: 0.99990000
+  txid: af7b950900c341613f623719b2d78aa0b28a9d09ee8b0b3cf0e89ba61b252d54  amt: 0.99990000
 chain ok: utxo at B' came from A'->B' txn
 
 [challenge script for addr C']
   type: scripthash
-  asm : OP_HASH160 a968e8b4c7a4d02a4e2d5437737c617bf0d75bd0 OP_EQUAL
-  hex : a914a968e8b4c7a4d02a4e2d5437737c617bf0d75bd087
+  asm : OP_HASH160 c6f304cc3c8e9faad30eac526990706253b7bde3 OP_EQUAL
+  hex : a914c6f304cc3c8e9faad30eac526990706253b7bde387
 
 [decoded signed B'->C']
 {
-  "txid": "b536bb250cb504ff206fd517a41b9b8595868dee4083942bd699e87a58a61564",
-  "hash": "c0aaa70bba256733fb922cb35e1931e89e5aeff1e60c1581ca3b11d2daab64cd",
+  "txid": "23717d9867ae676544c96984f81b5728a645a8628c4093ed66366302d3831a77",
+  "hash": "8d401a9272e966368cb24a6e100042f9b96255221e74f78c4cc1f599c4d21cbe",
   "version": 2,
   "size": 215,
   "vsize": 134,
@@ -91,15 +96,15 @@ chain ok: utxo at B' came from A'->B' txn
   "locktime": 0,
   "vin": [
     {
-      "txid": "b92b2ef1b3f4daac1b6bc6da28cf5b46c6d1333f7568308b8dade4e2521bc7c0",
+      "txid": "af7b950900c341613f623719b2d78aa0b28a9d09ee8b0b3cf0e89ba61b252d54",
       "vout": 0,
       "scriptSig": {
-        "asm": "0014ffb9dcac2cca1e4ea378498d4f1beda758b771e3",
-        "hex": "160014ffb9dcac2cca1e4ea378498d4f1beda758b771e3"
+        "asm": "001499e40a39dea73ea25ab3301f4561f353927b9170",
+        "hex": "16001499e40a39dea73ea25ab3301f4561f353927b9170"
       },
       "txinwitness": [
-        "3044022075f0860138569067736ab12bec4ef0fdd18fedb3dfddbb0dfb54e6ee58bd59620220779c1ccacf103adc427f52626212545b68a3f214bedba0663a6dfd270eb81ca001",
-        "0245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c"
+        "3044022050fadc4db8440a3be579b631214211c10f5bb933790c11f56037682b6a99987802202824521112ec0f1fea4a57b15b4d5242fdb08f1769064dc943efcd1ad8edb80401",
+        "03e49f7ba180358fe94cc257b56ace978da96c33164c54803a66cbce0bfc96a757"
       ],
       "sequence": 4294967293
     }
@@ -109,10 +114,10 @@ chain ok: utxo at B' came from A'->B' txn
       "value": 0.9998,
       "n": 0,
       "scriptPubKey": {
-        "asm": "OP_HASH160 a968e8b4c7a4d02a4e2d5437737c617bf0d75bd0 OP_EQUAL",
-        "desc": "addr(2N8gyrug6h3uMr51cFdR91VkeJ5tBWv6vC8)#5mf6xequ",
-        "hex": "a914a968e8b4c7a4d02a4e2d5437737c617bf0d75bd087",
-        "address": "2N8gyrug6h3uMr51cFdR91VkeJ5tBWv6vC8",
+        "asm": "OP_HASH160 c6f304cc3c8e9faad30eac526990706253b7bde3 OP_EQUAL",
+        "desc": "addr(2NBPAuWDYffqRB2ut14GK98fTaPNZx3R9Jd)#x0mt80ax",
+        "hex": "a914c6f304cc3c8e9faad30eac526990706253b7bde387",
+        "address": "2NBPAuWDYffqRB2ut14GK98fTaPNZx3R9Jd",
         "type": "scripthash"
       }
     }
@@ -120,21 +125,26 @@ chain ok: utxo at B' came from A'->B' txn
 }
 
 [response scriptsig]
-  asm: 0014ffb9dcac2cca1e4ea378498d4f1beda758b771e3
-  hex: 160014ffb9dcac2cca1e4ea378498d4f1beda758b771e3
+  asm: 001499e40a39dea73ea25ab3301f4561f353927b9170
+  hex: 16001499e40a39dea73ea25ab3301f4561f353927b9170
 
 [witness data]
-  [0] signature: 3044022075f0860138569067736ab12bec4ef0fdd18fedb3dfddbb0dfb54e6ee58bd59620220779c1ccacf103adc427f52626212545b68a3f214bedba0663a6dfd270eb81ca001
-  [1] pubkey: 0245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c
+witness stack size: 2
+  [0] signature: 3044022050fadc4db8440a3be579b631214211c10f5bb933790c11f56037682b6a99987802202824521112ec0f1fea4a57b15b4d5242fdb08f1769064dc943efcd1ad8edb80401
+  [1] pubkey: 03e49f7ba180358fe94cc257b56ace978da96c33164c54803a66cbce0bfc96a757
+
+--- SegWit structure ---
+scriptSig contains redeemScript
+signature and pubkey moved to witness
 
 [challenge vs response]
-challenge spk B': OP_HASH160 32aa2bcdb8f5ede4a60b2f300f919aaaf5745796 OP_EQUAL
-response ssig   : 0014ffb9dcac2cca1e4ea378498d4f1beda758b771e3
-witness sig     : 3044022075f0860138569067736ab12bec4ef0fd ...
-witness pubkey  : 0245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c
+challenge spk B': OP_HASH160 b89a764a054a1ceffd68bac5e3da953aacbb320e OP_EQUAL
+response ssig   : 001499e40a39dea73ea25ab3301f4561f353927b9170
+witness sig     : 3044022050fadc4db8440a3be579b631214211c1 ...
+witness pubkey  : 03e49f7ba180358fe94cc257b56ace978da96c33164c54803a66cbce0bfc96a757
 
-broadcasted! txid B'->C': b536bb250cb504ff206fd517a41b9b8595868dee4083942bd699e87a58a61564
-mined 6 bloks
+broadcasted! txid B'->C': 23717d9867ae676544c96984f81b5728a645a8628c4093ed66366302d3831a77
+mined 6 blocks
 
 --- txn sizes ---
 
@@ -149,7 +159,7 @@ B'->C':
   weight: 533 WU
 
 --- btcdeb command ---
-btcdeb --tx=02000000000101c0c71b52e2e4ad8d8b3068753f33d1c6465bcf28dac66b1bacdaf4b3f12e2bb90000000017160014ffb9dcac2cca1e4ea378498d4f1beda758b771e3fdffffff01e092f5050000000017a914a968e8b4c7a4d02a4e2d5437737c617bf0d75bd08702473044022075f0860138569067736ab12bec4ef0fdd18fedb3dfddbb0dfb54e6ee58bd59620220779c1ccacf103adc427f52626212545b68a3f214bedba0663a6dfd270eb81ca001210245085c3e415932ea3eff76b3890388d13a03ff461882db7b6a95067a6289a77c00000000 --txin=02000000000101d1c62ec544ef775d2910c9a79137d7c9e789262ed6b6807b92d7e5c7508f10a50100000017160014c1aa6e6da6fc63969307e4772b27507ef50a24f9fdffffff01f0b9f5050000000017a91432aa2bcdb8f5ede4a60b2f300f919aaaf5745796870247304402206969870bc46ee27b0dcbe402646ef4597e2b5ab3f365212071a7fa29aeaf407e02205aa16b4c55ad09cb44f17614ea417397868c69718f17799dcfaa84b93b6a494401210330313eff56cb0bc8c1a5e7156e2491c671d4ff0a87a01628248583003a17900400000000
+btcdeb --tx=02000000000101542d251ba69be8f03c0b8bee099d8ab2a08ad7b21937623f6141c30009957baf000000001716001499e40a39dea73ea25ab3301f4561f353927b9170fdffffff01e092f5050000000017a914c6f304cc3c8e9faad30eac526990706253b7bde38702473044022050fadc4db8440a3be579b631214211c10f5bb933790c11f56037682b6a99987802202824521112ec0f1fea4a57b15b4d5242fdb08f1769064dc943efcd1ad8edb804012103e49f7ba180358fe94cc257b56ace978da96c33164c54803a66cbce0bfc96a75700000000 --txin=0200000000010162763937b8ad2ba5cc97206e5782f8fe488b1a2178350e7aef8aab27a5f860530000000017160014c40f1affe289b5e546d61e481afa427059021b31fdffffff01f0b9f5050000000017a914b89a764a054a1ceffd68bac5e3da953aacbb320e870247304402204d01cfff922ed358d979f3eff2ab4907734ade1e32e56472b36d36061671c20b022076a1a1c8da2969bd5ce849aef94ed00c2a0795e18a6392da627e496a1ff793f00121039779e0c837efebfb59a1345dcea907d42a203c0695df249ba0f5d6a544cc8b5700000000
 
 saved to part2_summary.json
 
